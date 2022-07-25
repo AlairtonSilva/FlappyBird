@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     }
 
     private void Update(){
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0) || Input.GetButtonDown("Jump")){
             _rb.velocity = Vector2.up * _vel;
         }
     }
