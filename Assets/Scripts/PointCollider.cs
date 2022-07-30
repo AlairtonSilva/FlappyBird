@@ -7,5 +7,6 @@ public class PointCollider : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PointController.Instance.AddPoint();
+        SoundController.Instance.PlaySound(1);
     }
 }

@@ -34,6 +34,8 @@ public class Movement : MonoBehaviour
             if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Jump"))
             {
                 _rb.velocity = Vector2.up * _vel;
+                SoundController.Instance.PlaySound(0);
+
             }
         }
         else {
@@ -53,6 +55,7 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("Call GameOverScreenn");
         }
+        SoundController.Instance.PlaySound(2);
         LevelController.Instance.SetGameOverStatus(true);
     }
 }
