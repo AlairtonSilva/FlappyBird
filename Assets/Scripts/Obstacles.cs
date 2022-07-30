@@ -12,20 +12,21 @@ public class Obstacles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject newPipe=Instantiate(pipe);
-        newPipe.transform.position=transform.position+ new Vector3(0, Random.Range(-height,height),0);
+        //GameObject newPipe=Instantiate(pipe);
+        //znewPipe.transform.position=transform.position+ new Vector3(0, Random.Range(-height,height),0);
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if(timer>maxTime && !LevelController.Instance.GetGameOverStatus()){
+        if(timer > maxTime && !LevelController.Instance.GetGameOverStatus() && LevelController.Instance.GetGameStartedStatus()){
             GameObject newPipe=Instantiate(pipe);
             newPipe.transform.position=transform.position+ new Vector3(0, Random.Range(-height,height),0);
             Destroy(newPipe,10);
             timer=0;
         }
+       
         timer+=Time.deltaTime;
     }
 }

@@ -14,6 +14,12 @@ public class LoopInfinity : MonoBehaviour
         m_Renderer = GetComponent<Renderer>();
     }
     void Update(){
-        m_Renderer.material.SetTextureOffset("_MainTex",GetComponent<Renderer>().material.GetTextureOffset("_MainTex") + new Vector2(textureSpeed,0)*Time.deltaTime);
+
+        if (!LevelController.Instance.GetGameOverStatus() && LevelController.Instance.GetGameStartedStatus())
+        {
+            m_Renderer.material.SetTextureOffset("_MainTex", GetComponent<Renderer>().material.GetTextureOffset("_MainTex") + new Vector2(textureSpeed, 0) * Time.deltaTime);
+        }
+        
+       
     }
 }

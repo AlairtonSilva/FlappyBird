@@ -24,10 +24,16 @@ public class PointController : MonoBehaviour
         }
     }
 
+
+
     public void AddPoint()
     {
         m_CurrentPoint++;
         m_Text.text = m_CurrentPoint.ToString();
+    }
+    public void ResetPointController()
+    {
+        m_CurrentPoint = 0;
     }
 
 }

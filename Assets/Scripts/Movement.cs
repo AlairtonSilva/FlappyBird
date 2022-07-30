@@ -11,6 +11,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private float bicoDown;
 
     [SerializeField] private float velocidadeAtual;
+
+    private Vector3 m_StartPosition;
     
 
     private void Start(){
@@ -20,8 +22,9 @@ public class Movement : MonoBehaviour
     private void Update(){
         
 
-        if (!LevelController.Instance.GetGameOverStatus())
+        if (!LevelController.Instance.GetGameOverStatus() && LevelController.Instance.GetGameStartedStatus())
         {
+            _rb.simulated = true;
             velocidadeAtual = _rb.velocity.y;
 
             Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Lerp(bicoDown, bicoUp, velocidadeAtual));
@@ -33,8 +36,15 @@ public class Movement : MonoBehaviour
                 _rb.velocity = Vector2.up * _vel;
             }
         }
-        
-       
+        else {
+            
+            if (LevelController.Instance.GetGameOverStatus())
+            {
+                transform.position = m_StartPosition;
+                transform.rotation = new Quaternion(0,0,0,0);
+                _rb.simulated = false;
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
