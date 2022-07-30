@@ -33,7 +33,15 @@ public class PointController : MonoBehaviour
     }
     public void ResetPointController()
     {
+        int latestRecord = PlayerPrefs.GetInt("Points");
+        int currentPoint = m_CurrentPoint;
         m_CurrentPoint = 0;
+        m_Text.text = "0";
+        if (currentPoint >= latestRecord)
+        {
+            PlayerPrefs.SetInt("Points", currentPoint);
+        }
+       
     }
 
 }
