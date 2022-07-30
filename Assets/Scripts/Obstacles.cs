@@ -20,7 +20,7 @@ public class Obstacles : MonoBehaviour
     void Update()
     {
         
-        if(timer>maxTime){
+        if(timer>maxTime && !LevelController.Instance.GetGameOverStatus()){
             GameObject newPipe=Instantiate(pipe);
             newPipe.transform.position=transform.position+ new Vector3(0, Random.Range(-height,height),0);
             Destroy(newPipe,10);
